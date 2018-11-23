@@ -37,7 +37,6 @@ function multiply(a, b) {
 function parseWithoutDivision(arr) {
   var results = [];
 
-  var index = 0;
   results = arr.map(function cb(x) {
     // for each number
     return arr.reduce(function(total, currVal) {
