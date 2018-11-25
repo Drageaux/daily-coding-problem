@@ -62,19 +62,20 @@ function deserialize(serialized) {
   var arr = serialized.slice();
   var done = false;
 
-  var headVal = arr.shift();
-  var result = {};
-  while (!done) {
-    result = new Node(headVal);
-    if (arr.length === 0) done = true;
-    headVal = arr.shift();
-    result.left = new Node(arr.shift());
-    if (arr.length === 0) done = true;
-    result.right = new Node(arr.shift());
-    if (arr.length === 0) done = true;
-  }
+  var result = new Node(arr.shift()); // root is the first node that doesn't require the loop
+  var nodeQueue = [result];
 
   var currNode;
+  while (!done) {
+    currNode = nodeQueue.shift(); // what's on the top of node queue to be checked?
+    if (arr.length === 0) done = true;
+    currNode.left = new Node(arr.shift()); // left is at head of the serialized array
+    nodeQueue.push(currNode.left); // add left node to queue to be checked in next iteration
+    if (arr.length === 0) done = true;
+    currNode.right = new Node(arr.shift()); // right is at next head of the serialized array
+    nodeQueue.push(currNode.right); // add right node to queue to be checked after left node is checked
+    if (arr.length === 0) done = true;
+  }
 
   return result;
 }
