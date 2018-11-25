@@ -20,35 +20,35 @@ console.log('parseWithDivision: ' + parseWithDivision(arr));
 console.log('parseWithOutDivision: ' + parseWithoutDivision(arr));
 
 function parseWithDivision(arr) {
-  var results = [];
-  var finalProduct = arr.reduce(multiply, 1); // find total product
-  results = arr.map(function cb(currVal) {
-    // exclude index out from total product
-    return finalProduct / currVal;
-  });
+    var results = [];
+    var finalProduct = arr.reduce(multiply, 1); // find total product
+    results = arr.map(function cb(currVal) {
+        // exclude index out from total product
+        return finalProduct / currVal;
+    });
 
-  return results;
+    return results;
 }
 
 function multiply(a, b) {
-  return a * b;
+    return a * b;
 }
 
 function parseWithoutDivision(arr) {
-  var results = [];
+    var results = [];
 
-  results = arr.map(function cb(x) {
-    // for each number
-    return arr.reduce(function(total, currVal) {
-      // multiply
-      if (currVal !== x) {
-        // except the number
-        return total * currVal;
-      } else {
-        return total;
-      }
-    }, 1);
-  });
+    results = arr.map(function cb(x) {
+        // for each number
+        return arr.reduce(function(total, currVal) {
+            // multiply
+            if (currVal !== x) {
+                // except the number
+                return total * currVal;
+            } else {
+                return total;
+            }
+        }, 1);
+    });
 
-  return results;
+    return results;
 }
