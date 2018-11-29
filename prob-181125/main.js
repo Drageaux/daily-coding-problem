@@ -9,3 +9,11 @@ and a get(index) which returns the node at index.
 If using a language that has no pointers(such as Python), 
 you can assume you have access to get_pointer and dereference_pointer functions
 that converts between nodes and memory addresses. */
+
+// interesting XOR problem
+function Node(prev, next) {
+    this.both = (prev || next) && !(prev && next);
+}
+
+// requires low level, memory manipulation though
+// TODO: save for another language that I can simulate
