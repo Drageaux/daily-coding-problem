@@ -15,6 +15,9 @@ def cons(a, b):
 Implement car and cdr. 
 */
 
+/*This is functional programming. It's an entire paradigm that I need dig deeper.
+This problem is just scratching the surface */
+
 function cons(a, b) {
     // accepts a function
     function pair(f) {
