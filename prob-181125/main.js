@@ -16,4 +16,5 @@ function Node(prev, next) {
 }
 
 // requires low level, memory manipulation though
-// TODO: save for another language that I can simulate
+// TODO: save for another language that I can simulate or find work around
+// https://stackoverflow.com/questions/4540422/why-is-there-no-logical-xor-in-javascript
