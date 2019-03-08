@@ -9,6 +9,10 @@ function f() {
   console.log('bruh');
 }
 
+// This code blocks for the specified duration. This is CPU hogging code.
+// This is different from a thread blocking itself and releasing CPU cycles
+// to be utilized by another thread.No such thing is going on here.
+// Do not use this code, it's a very bad idea.
 function scheduler(f, n) {
   var i = 0;
   var start = new Date().getTime();
@@ -17,9 +21,6 @@ function scheduler(f, n) {
   return f();
   // setTimeout(f, n);
 }
-// This code blocks for the specified duration. This is CPU hogging code.
-// This is different from a thread blocking itself and releasing CPU cycles
-// to be utilized by another thread.No such thing is going on here.
-// Do not use this code, it's a very bad idea.
 
 scheduler(f, 1000);
+console.log('This should run first');
