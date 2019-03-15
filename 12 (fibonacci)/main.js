@@ -37,17 +37,55 @@ function uniqueWaysOp(n) {
   return a;
 }
 
+/*
+BRICKED Max stack size exceeded 
 function uniqueWaysIrr(n, X) {
   if (n < 0) return 0;
   else if (n === 0) return 1;
   else {
+    var sum = 0;
+    for (var i = 0; i < n; i++) {
+      sum += uniqueWaysIrr(n - i, X);
+    }
+    return sum;
   }
 }
+*/
+function uniqueWaysIrrOp(n, X) {
+  var cache = [];
+  for (var _ = 0; _ <= n; _++) {
+    cache[_] = 0;
+  }
+  cache[0] = 1;
+
+  for (var i = 1; i < n + 1; i++) {
+    X.forEach(x => {
+      console.log(cache);
+      if (i - x >= 0) {
+        cache[i] += cache[i - x];
+      }
+    });
+  }
+
+  console.log(cache);
+
+  return cache[n];
+}
+
+function sum(lst) {}
 
 console.time('uniqueWays');
-console.log(uniqueWays(20));
+console.log(uniqueWays(10));
 console.timeEnd('uniqueWays');
 
 console.time('uniqueWaysOp');
-console.log(uniqueWaysOp(20));
+console.log(uniqueWaysOp(10));
 console.timeEnd('uniqueWaysOp');
+
+// console.time('uniqueWaysIrr');
+// console.log(uniqueWaysIrr(5, [1, 3, 5]));
+// console.timeEnd('uniqueWaysIrr');
+
+console.time('uniqueWaysIrrOp');
+console.log(uniqueWaysIrrOp(7, [1, 3, 5]));
+console.timeEnd('uniqueWaysIrrOp');
