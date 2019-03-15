@@ -25,7 +25,6 @@ function fibDynamic(N) {
     // 1-index starts with 1 + 0-index
     for (var i = 1; i <= N; i++) {
       cache[i] += cache[i - 1] + (i - 2 >= 0 ? cache[i - 2] : 0);
-      print(cache);
     }
     return cache[N];
   }
@@ -41,4 +40,4 @@ function printTime(obj, name) {
 }
 
 printTime(fib(10), 'fib');
-printTime(fibDynamic(10), 'fibDynamic');
+printTime(fibDynamic(1500), 'fibDynamic');
